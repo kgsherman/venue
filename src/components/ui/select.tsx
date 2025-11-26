@@ -26,7 +26,7 @@ function SelectTrigger({
         size === "sm" &&
           "gap-1.5 px-[calc(--spacing(2.5)-1px)] py-[calc(--spacing(1)-1px)]",
         size === "lg" && "py-[calc(--spacing(2)-1px)]",
-        className,
+        className
       )}
       data-slot="select-trigger"
       {...props}
@@ -73,7 +73,7 @@ function SelectPopup({
           {...props}
         >
           <SelectPrimitive.ScrollUpArrow
-            className="top-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:top-px before:h-[200%] before:rounded-t-[calc(var(--radius-lg)-1px)] before:bg-gradient-to-b before:from-50% before:from-popover"
+            className="top-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:top-px before:h-[200%] before:rounded-t-[calc(var(--radius-lg)-1px)] before:bg-linear-to-b before:from-50% before:from-popover"
             data-slot="select-scroll-up-arrow"
           >
             <ChevronUpIcon className="relative size-4" />
@@ -82,7 +82,7 @@ function SelectPopup({
             <SelectPrimitive.List
               className={cn(
                 "max-h-(--available-height) min-w-(--anchor-width) overflow-y-auto p-1",
-                className,
+                className
               )}
               data-slot="select-list"
             >
@@ -90,7 +90,7 @@ function SelectPopup({
             </SelectPrimitive.List>
           </span>
           <SelectPrimitive.ScrollDownArrow
-            className="bottom-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:bottom-px before:h-[200%] before:rounded-b-[calc(var(--radius-lg)-1px)] before:bg-gradient-to-t before:from-50% before:from-popover"
+            className="bottom-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:bottom-px before:h-[200%] before:rounded-b-[calc(var(--radius-lg)-1px)] before:bg-linear-to-t before:from-50% before:from-popover"
             data-slot="select-scroll-down-arrow"
           >
             <ChevronDownIcon className="relative size-4" />
@@ -110,7 +110,7 @@ function SelectItem({
     <SelectPrimitive.Item
       className={cn(
         "grid in-data-[side=none]:min-w-[calc(var(--anchor-width)+1.25rem)] cursor-default grid-cols-[1rem_1fr] items-center gap-2 rounded-sm py-1 ps-2 pe-4 text-base outline-none data-disabled:pointer-events-none data-highlighted:bg-accent data-highlighted:text-accent-foreground data-disabled:opacity-64 sm:text-sm [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        className,
+        className
       )}
       data-slot="select-item"
       {...props}
@@ -127,6 +127,7 @@ function SelectItem({
           width="24"
           xmlns="http://www.w3.org/1500/svg"
         >
+          <title>Check</title>
           <path d="M5.252 12.7 10.2 18.63 18.748 5.37" />
         </svg>
       </SelectPrimitive.ItemIndicator>
