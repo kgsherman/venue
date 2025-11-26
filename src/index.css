@@ -30,11 +30,11 @@
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
-  --accent: var(--accent);
+  --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
-  --muted: var(--muted);
+  --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
-  --secondary: var(--secondary);
+  --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
@@ -48,8 +48,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   @keyframes skeleton {
-  to {
-    background-position: -200% 0;
+    to {
+      background-position: -200% 0;
     }
   }
 }
@@ -64,15 +64,15 @@
   --popover-foreground: var(--color-zinc-900);
   --primary: var(--color-zinc-800);
   --primary-foreground: var(--color-zinc-50);
-  --secondary: --alpha(var(--color-black) / 4%);
+  --secondary: var(--color-zinc-100);
   --secondary-foreground: var(--color-zinc-900);
-  --muted: --alpha(var(--color-black) / 4%);
+  --muted: var(--color-zinc-100);
   --muted-foreground: var(--color-zinc-600);
-  --accent: --alpha(var(--color-black) / 4%);
+  --accent: var(--color-zinc-200);
   --accent-foreground: var(--color-zinc-900);
   --destructive: var(--color-red-500);
-  --border: --alpha(var(--color-black) / 10%);
-  --input: --alpha(var(--color-black) / 10%);
+  --border: var(--color-zinc-200);
+  --input: var(--color-zinc-200);
   --ring: var(--color-zinc-400);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
