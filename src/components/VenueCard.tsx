@@ -73,7 +73,7 @@ export function VenueCard({ venue, onEdit }: VenueCardProps) {
                   No Hero Image
                 </div>
               )}
-              <div className="absolute top-4 left-4">
+              <div className="absolute top-4 left-4 flex flex-col gap-2">
                 <Badge
                   className="text-white backdrop-blur-md border-0 shadow-sm"
                   style={{ backgroundColor: venue.status_color || "" }}
@@ -81,6 +81,11 @@ export function VenueCard({ venue, onEdit }: VenueCardProps) {
                 >
                   {venue.status || "Status Unknown"}
                 </Badge>
+                {!venue.active && (
+                  <Badge variant="outline" className="bg-amber-50 text-amber-700">
+                    Inactive
+                  </Badge>
+                )}
               </div>
               <div className="absolute top-4 right-4 bottom-4">
                 <div className="flex-col flex gap-2 h-full">
@@ -169,7 +174,6 @@ export function VenueCard({ venue, onEdit }: VenueCardProps) {
                 <CardTitle className="text-2xl font-bold">
                   {venue.name}
                 </CardTitle>
-
                 {/* Location / Drive Time */}
                 <div className="flex items-center text-muted-foreground text-sm h-6">
                   {driveTimeDisplay ? (

@@ -5,6 +5,7 @@ import { VenueCard } from "@/components/VenueCard";
 import { VenueForm } from "@/components/VenueForm";
 import { Button } from "@/components/ui/button";
 import { Plus, Loader2 } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 import {
   Select,
   SelectItem,
@@ -28,6 +29,7 @@ function App() {
     Tables<"venues"> | undefined
   >(undefined);
   const [sortOption, setSortOption] = useState<SortOption>("alphabetic");
+  const [showInactive, setShowInactive] = useState(false);
 
   const fetchVenues = useCallback(async () => {
     setLoading(true);
@@ -47,7 +49,11 @@ function App() {
     fetchVenues();
   }, [fetchVenues]);
 
-  const sortedVenues = [...venues].sort((a, b) => {
+  const filteredVenues = venues.filter((venue) =>
+    showInactive ? true : venue.active !== false
+  );
+
+  const sortedVenues = [...filteredVenues].sort((a, b) => {
     if (sortOption === "alphabetic") {
       return (a.name || "").localeCompare(b.name || "");
     }
@@ -98,6 +104,19 @@ function App() {
           </div>
           {view === "list" && (
             <div className="flex items-center gap-2 w-full sm:w-auto">
+              <div className="flex items-center gap-2 bg-white border rounded-md px-3 py-2">
+                <Switch
+                  id="show-inactive"
+                  checked={showInactive}
+                  onCheckedChange={setShowInactive}
+                />
+                <label
+                  htmlFor="show-inactive"
+                  className="text-sm text-slate-700 select-none"
+                >
+                  Show inactive
+                </label>
+              </div>
               <Select
                 items={sortOptions}
                 onValueChange={setSortOption}

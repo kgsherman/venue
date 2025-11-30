@@ -23,6 +23,7 @@ export type Database = {
           images: string[] | null
           location: string | null
           name: string
+          active: boolean | null
           notes: string | null
           price_midweek: string | null
           price_saturday: string | null
@@ -32,6 +33,7 @@ export type Database = {
           website_url: string | null
         }
         Insert: {
+          active?: boolean | null
           brochure_url?: string | null
           created_at?: string | null
           drive_time_minutes?: number | null
@@ -48,6 +50,7 @@ export type Database = {
           website_url?: string | null
         }
         Update: {
+          active?: boolean | null
           brochure_url?: string | null
           created_at?: string | null
           drive_time_minutes?: number | null

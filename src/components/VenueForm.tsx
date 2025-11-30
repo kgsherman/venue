@@ -7,6 +7,7 @@ import { ButtonGroup } from "@/components/ui/group";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { Loader2, X, Sparkles, Trash2, ArrowUp, ArrowDown } from "lucide-react";
 
 interface VenueFormProps {
@@ -32,6 +33,7 @@ export function VenueForm({ initialData, onSave, onCancel }: VenueFormProps) {
     notes: "",
     drive_time_minutes: null,
     ...initialData,
+    active: initialData?.active ?? true,
     images: initialData?.images || [],
   });
 
@@ -282,7 +284,11 @@ export function VenueForm({ initialData, onSave, onCancel }: VenueFormProps) {
         }
       }
 
-      const dataToSave = { ...formData, drive_time_minutes: driveTime };
+      const dataToSave = {
+        ...formData,
+        active: formData.active ?? true,
+        drive_time_minutes: driveTime,
+      };
 
       if (formData.id) {
         const { error } = await supabase
@@ -397,6 +403,26 @@ export function VenueForm({ initialData, onSave, onCancel }: VenueFormProps) {
             value={formData.status || ""}
             onChange={handleChange}
           />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between rounded-md border bg-slate-50 px-4 py-3">
+        <div className="space-y-1">
+          <Label htmlFor="active">Venue visibility</Label>
+          <p className="text-sm text-muted-foreground">
+            Inactive venues stay saved but are hidden from the list by default.
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-muted-foreground">Inactive</span>
+          <Switch
+            id="active"
+            checked={formData.active ?? true}
+            onCheckedChange={(checked) =>
+              setFormData((prev) => ({ ...prev, active: checked }))
+            }
+          />
+          <span className="text-sm text-muted-foreground">Active</span>
         </div>
       </div>
 
